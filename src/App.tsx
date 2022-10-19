@@ -1,13 +1,13 @@
 import React 	from 'react';
 import Auth 	from './auth/views';
 
-import './app.css';
+import styles 	from './app.css';
 
 
 const App: React.FC = (): React.ReactElement => {
 
 	return (
-		<div>
+		<div className={styles.app}>
 			<Auth />
 		</div>
 	)

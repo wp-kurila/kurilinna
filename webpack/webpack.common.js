@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: path.resolve(__dirname, '..', './src/index.tsx'),
@@ -15,12 +14,30 @@ module.exports = {
 				use: [
 					{
 						loader: 'babel-loader'
+					},
+					{
+						loader: 'astroturf/loader'
 					}
 				]
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1,
+							modules: true
+						}
+					},
+					{
+						loader: 'postcss-loader'
+					}
+				]
 			},
 			{
 				test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -39,11 +56,6 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '..', './src/index.html')
-		}),
-		// new CopyPlugin({
-		// 	patterns: [
-		// 		{ from: "source", to: "dest" }
-		// 	]
-		// })
+		})
 	]
 }
