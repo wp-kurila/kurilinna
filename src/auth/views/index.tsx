@@ -13,11 +13,10 @@ const Auth = () => {
 	const submit = (event) => {
 		event.preventDefault();
 
-		if (disabled) {
-			return;
-		}
+		console.log(`Логин: ${login}; пароль: ${password}`);
 
-		console.log(`Логин: ${login}; пароль: ${password}`)
+		setLogin('');
+		setPassword('');
 	}
 
 	return (
