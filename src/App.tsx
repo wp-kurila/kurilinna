@@ -1,5 +1,5 @@
 import React 	from 'react';
-import Auth 	from './auth/views';
+import Auth 	from './Auth';
 
 import styles 	from './app.css';
 
@@ -13,4 +13,4 @@ const App: React.FC = (): React.ReactElement => {
 	)
 }
 
-export default App
+export default App;

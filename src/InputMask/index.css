@@ -1,0 +1,67 @@
+.field {
+	margin-bottom: 16px;
+	position: relative;
+}
+
+.input {
+	padding: 25px 15px 8px;
+	border-radius: 10px;
+	border: 1px solid #3b3c44;
+	color: transparent;
+	box-sizing: border-box;
+	width: 100%;
+	height: 56px;
+	appearance: none;
+	background: #2e303a;
+	font-size: 18px;
+	line-height: 26px;
+
+	&::placeholder {
+		color: transparent;
+	}
+
+	&:hover {
+		border-color: #247fff;
+	}
+
+	&:focus, &.inputActive {
+		outline: 0;
+		color: #f2f3f9;
+
+		&::placeholder {
+			color: #7f818f;
+		}
+	}
+
+	&:focus {
+		border: 1px solid #247fff;
+		padding-left: 15px;
+		padding-right: 15px;
+		background: #18191e;
+	}
+}
+
+.label {
+	color: #7f818f;
+	position: absolute;
+	left: 16px;
+	padding: 0;
+	top: 15px;
+	font-size: 18px;
+	line-height: 26px;
+	transition: top 0.1s ease;
+	pointer-events: none;
+	font-weight: normal;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: calc(100% - 56px);
+	z-index: 1;
+}
+
+.label_active {
+	z-index: 10;
+	top: 4px;
+	font-size: 14px;
+	line-height: 24px;
+}

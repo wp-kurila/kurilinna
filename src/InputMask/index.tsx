@@ -3,39 +3,6 @@ import cn 								from 'classnames';
 
 import styles 							from './index.css';
 
-const Auth = () => {
-
-	const [login, setLogin] = useState('');
-	const [password, setPassword] = useState('');
-
-	const disabled = !(login && password);
-
-	const submit = (event) => {
-		event.preventDefault();
-
-		console.log(`Логин: ${login}; пароль: ${password}`);
-
-		setLogin('');
-		setPassword('');
-	}
-
-	return (
-		<div className={styles.auth}>
-			<div className={styles.content}>
-				<div className={styles.logo}/>
-				<div className={styles.text}>Вход</div>
-				<form onSubmit={submit}>
-					<InputMask name='login' content={login} setName={setLogin} label='Номер телефона или логин' />
-					{login && <InputMask name='password' content={password} setName={setPassword} label='Введите пароль' />}
-					<button className={cn(styles.btn, styles.btnSuccess, {[styles.btnDisabled]: disabled})} disabled={disabled} type='submit'>Далее</button>
-				</form>				
-			</div>
-		</div>
-	)
-}
-
-export default React.memo(Auth);
-
 interface Props {
 	name: string;
 	content: string;
@@ -57,7 +24,7 @@ const InputMask: React.FC<Props> = (props: Props): React.ReactElement => {
 		setFocused(false);
 	}, []);
 
-	const onChange = useCallback((event) => {
+	const onChange = useCallback((event: React.ChangeEvent<any>) => {
 		const value = event.target.value;
 		setName(value);
 	}, [setName]);
@@ -79,3 +46,5 @@ const InputMask: React.FC<Props> = (props: Props): React.ReactElement => {
 		</div>
 	)
 }
+
+export default React.memo(InputMask);
