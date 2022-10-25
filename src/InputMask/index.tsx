@@ -42,7 +42,7 @@ const InputMask: React.FC<Props> = (props: Props): React.ReactElement => {
 	return (
 		<div className={styles.field} onFocus={handleFocus} onBlur={handleBlurComp}>
 			<input maxLength={100} className={inputCls} onChange={onChange} type={type} value={content}/>
-			<label className={labelCls}>{label}</label>
+			<label className={labelCls} htmlFor={name}>{label}</label>
 		</div>
 	)
 }
