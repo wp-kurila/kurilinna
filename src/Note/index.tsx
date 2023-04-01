@@ -14,26 +14,17 @@ interface Props {
 
 const Notes: React.FC<Props> = (props: Props): React.ReactElement => {
 
-	const [notes, setNotes] = useState<string[]>([]);
+	// const [notes, setNotes] = useState<string[]>([]);
 
-	// useEffect(() => {
-	// 	if (notes.length > 0) {
-			
-	// 		setTimeout(() => {
-	// 			console.log('notes')
-	// 			console.log(notes)
-	// 		}, 10000);
-
-	// 	}
+	// const showNote = useCallback((text: string) => {
+	// 	setNotes([...notes, text]);
 	// }, [notes]);
 
-	const showNote = useCallback((text: string) => {
-		setNotes([...notes, text]);
+	// const contextValue = useMemo(() => ({showNote}), [showNote]);
+	const [notes, setNotes] = useState<{text: string, id: number}[]>([]);
 
-		// setTimeout(() => {
-		// 	const newNotes = notes.slice(1);
-		// 	setNotes(newNotes);
-		// }, 5000)
+	const showNote = useCallback((text: string) => {
+		setNotes([...notes, {text, id: 0}]);
 	}, [notes]);
 
 	const contextValue = useMemo(() => ({showNote}), [showNote]);

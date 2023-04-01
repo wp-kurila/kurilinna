@@ -1,17 +1,16 @@
 import React, {useState} 	from 'react';
 import cn 					from 'classnames';
 import InputMask 			from '../InputMask';
-import Note 				from '../Note';
-import Portal 				from '../Portal'
+import useNote 				from '../Note/useNote';
 
 import styles 				from './index.css';
 
-const Auth = () => {
+const Auth: React.FC = (): React.ReactElement => {
 
 	const [login, setLogin] = useState('');
 	const [password, setPassword] = useState('');
-	const [note, setNote] = useState(true);
 
+	const showNote = useNote();
 	const disabled = !(login && password);
 
 	const submit = (event: React.ChangeEvent<any>) => {
@@ -21,14 +20,7 @@ const Auth = () => {
 
 		setLogin('');
 		setPassword('');
-		setNote(true);
-		handleNote();
-	}
-
-	const handleNote = () => {
-		setTimeout(() => {
-			setNote(false);
-		}, 5000);
+		showNote('bingo');
 	}
 
 	return (
@@ -42,11 +34,6 @@ const Auth = () => {
 					<button className={cn(styles.btn, styles.btnSuccess, {[styles.btnDisabled]: disabled})} disabled={disabled} type='submit'>Далее</button>
 				</form>
 			</div>
-			{/* {note && (
-				<Portal>
-					<Note />
-				</Portal>
-			)} */}
 		</div>
 	)
 }
